@@ -8,10 +8,10 @@ Built With
 
 ## Android Output 
 <div align="center">
-    <img src="https://github.com/jklin12/Pokedek-Vokraf/screenshot/android_01.png" width="200px"</img> 
-    <img src="https://github.com/jklin12/Pokedek-Vokraf/screenshot/android_02.png" width="200px"</img> 
-    <img src="https://github.com/jklin12/Pokedek-Vokraf/screenshot/android_03.png" width="200px"</img> 
-    <img src="https://github.com/jklin12/Pokedek-Vokraf/screenshot/android_04.png" width="200px"</img> 
+    <img src="https://github.com/jklin12/Pokedek-Vokraf/blob/main/screenshot/android_01.png" width="200px"</img> 
+    <img src="https://github.com/jklin12/Pokedek-Vokraf/blob/main/screenshot/android_02.png" width="200px"</img> 
+    <img src="https://github.com/jklin12/Pokedek-Vokraf/blob/main/screenshot/android_03.png" width="200px"</img> 
+    <img src="https://github.com/jklin12/Pokedek-Vokraf/blob/main/screenshot/android_04.png" width="200px"</img> 
     
 </div>
 
