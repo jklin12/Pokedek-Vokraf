@@ -2,7 +2,7 @@
 
 This project was created to complete the Technical Test for recruitment at PT Collaboration Edukasi Nusantara (Vokraf). Build with [Pokede API](https://pokeapi.co/api/v2/) 
 
-Built With 
+## Built With 
     HTTP - A composable, Future-based library for making HTTP requests.
     Flutter BLOC - Flutter Widgets that make it easy to implement the BLoC (Business Logic Component) design pattern. Built to be used with the bloc state management package.
 
