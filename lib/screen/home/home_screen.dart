@@ -25,12 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     homeBloc.add(FetchHomeEvent());
-    
-    if(!scrollController.hasClients){
-      Future.delayed(const Duration(seconds: 1), () {
-      homeBloc.add(FetchHomeEvent());
-              });
-      
+
+    if (!scrollController.hasClients) {
+      Future.delayed(const Duration(seconds: 3), () {
+        homeBloc.add(FetchHomeEvent());
+      });
     }
     super.initState();
   }
@@ -88,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       )),
     );
-  } 
+  }
 
   Widget pokemonListWideget() {
     return Padding(
@@ -103,10 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
               homeBloc.haveMoreData = false;
               homeBloc.add(FetchHomeEvent());
             }
-             
           }),
         children: [
-          GridView.builder( 
+          GridView.builder(
             physics: const ScrollPhysics(),
             shrinkWrap: true,
             itemCount: pokemonList.length,
