@@ -41,51 +41,55 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
           child: Column(
         mainAxisSize: MainAxisSize.max,
-        children: [
-          const HomeTitle(),
-          const Row(
-            children: [HomeSearch(), SortButton()],
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: SizedBox(
-                height: double.infinity,
-                width: double.infinity,
-                child: Card(
-                  color: Colors.white,
-                  child: BlocProvider<HomeBloc>(
-                    create: (BuildContext context) => homeBloc,
-                    child: BlocBuilder<HomeBloc, HomeState>(
-                        builder: (context, state) {
-                      if (state is HomeLoadingMore) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else if (state is HomeLoaded) {
-                        if (state.data.isNotEmpty == true) {
-                          pokemonList.addAll(state.data);
-                        } else {
-                          return const Text(
-                            "Data not found",
-                            style: TextStyle(color: Colors.red),
-                          );
-                        }
-                      } else if (state is HomeError) {
-                        return Text(
-                          state.errorMessage,
-                          style: const TextStyle(color: Colors.red),
-                        );
-                      }
-                      return pokemonListWideget();
-                    }),
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
+        children: [const HomeTitle(), filterWidget(), listContainerWidget()],
       )),
+    );
+  }
+
+  Widget filterWidget() {
+    return const Row(
+      children: [HomeSearch(), SortButton()],
+    );
+  }
+
+  Widget listContainerWidget() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Card(
+            color: Colors.white,
+            child: BlocProvider<HomeBloc>(
+              create: (BuildContext context) => homeBloc,
+              child:
+                  BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                if (state is HomeLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is HomeLoaded) {
+                  if (state.data.isNotEmpty == true) {
+                    pokemonList.addAll(state.data);
+                  } else {
+                    return const Text(
+                      "Data not found",
+                      style: TextStyle(color: Colors.red),
+                    );
+                  }
+                } else if (state is HomeError) {
+                  return Text(
+                    state.errorMessage,
+                    style: const TextStyle(color: Colors.red),
+                  );
+                }
+                return pokemonListWideget();
+              }),
+            ),
+          ),
+        ),
+      ),
     );
   }
 

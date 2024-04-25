@@ -9,9 +9,6 @@ class HomeInitial extends HomeState {}
 //loading state
 class HomeLoading extends HomeState {}
 
-//loading more state
-class HomeLoadingMore extends HomeState {}
-
 //on data loaded state
 class HomeLoaded extends HomeState {
   late final List<ResultModel> data;

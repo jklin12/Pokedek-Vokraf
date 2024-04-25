@@ -6,9 +6,9 @@ import 'package:vorkraf_assessment/utils/app_style.dart';
 
 class AboutDetail extends StatelessWidget {
   const AboutDetail(
-      {super.key, required this.detailModel, required this.speciesModel});
-  final DetailModel detailModel;
-  final SpeciesModel speciesModel;
+      {super.key, required this.detailData, required this.speciesData});
+  final DetailModel detailData;
+  final SpeciesModel speciesData;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class AboutDetail extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            speciesModel.flavorTextEntries![0].flavorText!,
+            speciesData.flavorTextEntries![0].flavorText!,
             style: AppStyles.body3,
           ),
         )
@@ -48,11 +48,11 @@ class AboutDetail extends StatelessWidget {
         Column(
           children: [
             Text(
-              detailModel.moves![0].move!.name!,
+              detailData.moves![0].move!.name!,
               style: AppStyles.body3,
             ),
             Text(
-              detailModel.moves![1].move!.name!,
+              detailData.moves![1].move!.name!,
               style: AppStyles.body3,
             ),
           ],
@@ -72,7 +72,7 @@ class AboutDetail extends StatelessWidget {
             children: [
               Image.asset(AppAssets.weight),
               Text(
-                "${detailModel.weight!} kg",
+                "${detailData.weight!} kg",
                 style: AppStyles.body3,
               )
             ],
@@ -93,7 +93,7 @@ class AboutDetail extends StatelessWidget {
             children: [
               Image.asset(AppAssets.straighten),
               Text(
-                "${detailModel.height!} m",
+                "${detailData.height!} m",
                 style: AppStyles.body3,
               )
             ],

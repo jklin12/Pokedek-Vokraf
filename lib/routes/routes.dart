@@ -18,12 +18,11 @@ class Routes {
             child: const HomeScreen(),
           ),
         );
+      //detail routes
       case DetailScreen.id:
         return MaterialPageRoute(
           builder: (context) {
-            return DetailScreen(
-              dataId: args as String
-            );
+            return DetailScreen(dataId: args as String);
           },
         );
       default:

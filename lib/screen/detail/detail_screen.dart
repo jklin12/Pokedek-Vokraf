@@ -30,7 +30,7 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   final DetailBloc detailBloc = DetailBloc();
   late DetailModel detailData;
-  late SpeciesModel speciesModel;
+  late SpeciesModel speciesData;
   int nextPage = 0;
   int prevPage = 0;
 
@@ -51,8 +51,8 @@ class _DetailScreenState extends State<DetailScreen> {
             if (state is DetailLoading) {
               return const LoadingScreen();
             } else if (state is DetailLoaded) {
-              detailData = state.data;
-              speciesModel = state.speciesdata;
+              detailData = state.detailData;
+              speciesData = state.speciesdata;
               return Scaffold(
                   extendBodyBehindAppBar: true,
                   backgroundColor: PokemonColor.getColor(
@@ -86,46 +86,25 @@ class _DetailScreenState extends State<DetailScreen> {
                           height: MediaQuery.of(context).size.height * 0.85,
                           child: Column(
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  PrevBtn(
-                                    dataId: detailData.id!,
-                                    onTap: () {
-                                      detailBloc.add(FetchDetailEvent(
-                                          "${state.prevPage}"));
-                                    },
-                                  ),
-                                  PokemonImage(
-                                      url: detailData.sprites!.frontDefault!),
-                                  NextBtn(
-                                    dataId: detailData.id!,
-                                    onTap: () {
-                                      detailBloc.add(FetchDetailEvent(
-                                          "${state.nextPage}"));
-                                    },
-                                  )
-                                ],
-                              ),
+                              imageWidget(state),
                               Typecard(
-                                detailModel: detailData,
+                                detailData: detailData,
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              title("About"),
+                              titleWidget("About"),
                               const SizedBox(
                                 height: 10,
                               ),
                               AboutDetail(
-                                detailModel: detailData,
-                                speciesModel: speciesModel,
+                                detailData: detailData,
+                                speciesData: speciesData,
                               ),
                               const SizedBox(
                                 height: 10,
                               ),
-                              title("Base Stats"),
+                              titleWidget("Base Stats"),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -148,7 +127,28 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  Widget title(String title) {
+  Widget imageWidget(DetailLoaded state) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        PrevBtn(
+          dataId: detailData.id!,
+          onTap: () {
+            detailBloc.add(FetchDetailEvent("${state.prevPage}"));
+          },
+        ),
+        PokemonImage(url: detailData.sprites!.frontDefault!),
+        NextBtn(
+          dataId: detailData.id!,
+          onTap: () {
+            detailBloc.add(FetchDetailEvent("${state.nextPage}"));
+          },
+        )
+      ],
+    );
+  }
+
+  Widget titleWidget(String title) {
     return Text(
       title,
       style: AppStyles.subtitle1.copyWith(

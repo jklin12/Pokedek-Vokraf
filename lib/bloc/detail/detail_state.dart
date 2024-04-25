@@ -11,11 +11,11 @@ class DetailLoading extends DetailState {}
 
 //on data loaded state
 class DetailLoaded extends DetailState {
-  late final DetailModel data;
+  late final DetailModel detailData;
   late final SpeciesModel speciesdata;
   late final int nextPage;
   late final int prevPage;
-  DetailLoaded(this.data,this.speciesdata,this.nextPage,this.prevPage);
+  DetailLoaded(this.detailData,this.speciesdata,this.nextPage,this.prevPage);
 }
 
 //error state

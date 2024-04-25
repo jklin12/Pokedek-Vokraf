@@ -4,8 +4,8 @@ import 'package:vorkraf_assessment/utils/app_style.dart';
 import 'package:vorkraf_assessment/utils/pokemon_color.dart';
 
 class Typecard extends StatelessWidget {
-  const Typecard({super.key, required this.detailModel});
-  final DetailModel detailModel;
+  const Typecard({super.key, required this.detailData});
+  final DetailModel detailData;
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,10 @@ class Typecard extends StatelessWidget {
       height: 30,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: detailModel.types!.length,
+        itemCount: detailData.types!.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          var item = detailModel.types![index];
+          var item = detailData.types![index];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal:8.0),
             child: Container(

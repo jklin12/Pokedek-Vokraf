@@ -9,12 +9,14 @@ class DetailRepo {
   Future getDetailData(String id) async {
     try {
       dynamic response =
-          await apiService.getDetailResponse(ApiEndPoints().getHomeData,id);
+          await apiService.getDetailResponse(ApiEndPoints().getPokemonData,id);
       return response;
     } catch (e) {
       rethrow;
     }
   }
+
+  //get species data repo
   Future getSpeciesData(String id) async {
     try {
       dynamic response =

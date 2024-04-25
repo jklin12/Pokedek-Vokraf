@@ -9,9 +9,9 @@ import 'package:http/http.dart' as http;
 class PokemonApiService extends BaseApiService {
  
 
-  //get pagination response
+  //get pokemon pagination data
   @override
-  Future getHomeResponse(String url,int limit,int offset) async {
+  Future getPaginationResponse(String url,int limit,int offset) async {
     dynamic responseJson;
     try {
       var query = {"limit": "$limit", "offset": "$offset"};
